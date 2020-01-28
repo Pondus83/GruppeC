@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Fortællingsgenerator</title>
+    <style>
+    </style>
 </head>
 <body>
     <form>
@@ -27,6 +29,10 @@
                 <td>Hvad elsker hovedpersonen at lave med sit kæledyr?</td>
                 <td><input type="text" id="f_oeglingsbeskaeftigelse" name="f_oeglingsbeskaeftigelse" placeholder="Ønglingsbeskæftigelse"></td>
             </tr>
+            <tr>
+                <td>Hvad er din yndlingsfarve?</td>
+                <td><input type="color" id="farve" name="farve" value="#ff0000"></td>
+            </tr>
         </table>
         <button type="button" onclick="fortallingsgenerator()">Sammensæt historien</button>
 
@@ -38,14 +44,19 @@
 </html>
 <script>
     function fortallingsgenerator() {
-        var f_navn, f_sted, f_keaeledyr_type, f_keaeledyr_navn, f_yglingsbeskaeftigelse, historien = "";
+        var f_navn, f_sted, f_keaeledyr_type, f_keaeledyr_navn, f_yglingsbeskaeftigelse, historien, farve;
 
         f_navn = document.getElementById("f_navn").value;
         f_sted = document.getElementById("f_sted").value;
         f_keaeledyr_type = document.getElementById("f_keaeledyr_type").value;
         f_keaeledyr_navn = document.getElementById("f_keaeledyr_navn").value;
         f_oeglingsbeskaeftigelse = document.getElementById("f_oeglingsbeskaeftigelse").value;
+        
+        farve = document.getElementById("farve").value;
 
-        document.getElementById("historien").innerHTML= "Nu skal jeg fortælle dig en historie om " + f_navn + ". " + f_navn + " kan godt lide at gå ture nær " + f_sted + ", sammen med " + f_keaeledyr_navn + " som er en " + f_keaeledyr_type + ". Sammen med " + f_keaeledyr_navn + " elsker " + f_navn + " at " + f_oeglingsbeskaeftigelse + ", som de laver hver gang de kan komme til det!";
+        document.body.style.backgroundColor = farve;
+
+        document.getElementById("historien").innerHTML= "Nu skal jeg fortælle dig en historie om " + f_navn + ". " + f_navn + " kan godt lide at gå ture nær " + f_sted + ", sammen med " + f_keaeledyr_navn + " som er en " + f_keaeledyr_type + ". Sammen med " + f_keaeledyr_navn + " elsker " + f_navn + " at " + f_oeglingsbeskaeftigelse + ", som de laver hver gang de kan komme til det!"; 
     }
+
 </script>
