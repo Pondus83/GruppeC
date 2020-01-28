@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Øvelse</title>
+        <style>
+            #et {
+                grid-area: et;
+            }
+
+            #to {
+                grid-area: to;
+            }
+
+            #tre {
+                grid-area: tre;
+            }
+
+            #myGrid {
+                display: grid;
+                grid-template-columns: 1fr 800px 1fr;
+                grid-template-areas: 
+                ". et ."
+                ". to ."
+                ". tre ."
+                ;
+            }
+        
+        </style>
+    </head>
+    <body id="myGrid">
+            <section id="et">
+                <p>Nummer et</p>
+            </section>
+            <section id="to">
+                <p>Nummer to</p>
+            </section>
+            <section id="tre">
+                <p>Nummer tre</p>
+            </section>
+    </body>
+</html>
