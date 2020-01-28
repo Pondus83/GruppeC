@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Omregning af fart</title>
+        <style>
+            #indhold {
+                grid-area: indhold;
+            }
+
+            body {
+                display: grid;
+                grid-template-columns: 1fr 800px 1fr;
+                grid-template-areas:
+                    ". indhold ."
+                    ;
+            }
+        </style>
+    </head>
+    <body>
+        <section id="indhold">
+            <h1>Beregning af fart mellem km/t, knob og m/s</h1>
+            <table>
+                <tr>
+                    <td>KM/T</td>
+                    <td>KNOB</td>
+                    <td>M/S</td>
+                </tr>
+                <tr>
+                    <td><input type="number" id="km" name="km" placeholder="km/t"></td>
+                    <td><input type="number" id="knob" name="knob" placeholder="Knob"></td>
+                    <td><input type="number" id="meter" name="meter" placeholder="m/s"></td>
+                </tr>
+            </table>
+            <p> Hvis du har skrevet i feltet til KM/T, bliver det omregnet og sat ind i KNOB og M/S.<br>
+                Hvis der stod noget deri, bliver dette slettet.<br>
+                Hvis du ikke har skrevet noget i KM/T, udregnes med knob.<br>
+                Hvis der ikke er skrevet noget i knob, udregnes med M/S.<br>
+                Hvis du ikke har skrevet i nogle af fleterne, er du en klogn og får en fejlbesked.</p>
+            <button type="button" onclick="behandl()">Udregn data</button>
+            <button type="button" onclick="clear()">Clear data</button>
+        </section>
+    </body>
+</html>
+
+<script>
+    function behandl() {
+        var km, knob, meter;
+
+        km = document.getElementById("km").value;
+        if(km!="") {
+            knob = km*1.852;
+            knob = knob.toFixed(2);
+            meter = km/3600*1000;
+            meter = meter.toFixed(2);
+
+            //Skal finde en måde at sætte dem ind igen.
+            alert("km/t= "+km+" knob= "+knob+" m/s= " +meter);
+        }
+        else {
+            knob = document.getElementById("knob").value;
+            if(knob!="") {
+                km = knob/1.852;
+                km = km.toFixed(2);
+                meter = knob/1.852/3600*1000;
+                meter = meter.toFixed(2);
+
+                //Skal finde en måde at sætte dem ind igen.
+                alert("km/t= "+km+" knob= "+knob+" m/s= " +meter);
+            }
+            else {
+                meter = document.getElementById("meter").value;
+                if (meter!="") {
+                    km = meter*3600/1000;
+                    km = km.toFixed(2);
+                    knob = meter*3600/1000*1.852;
+                    knob = knob.toFixed(2);
+
+                    //Skal finde en måde at sætte dem ind igen, denne virker ikke
+                    // document.getElementById("km").innerText= km;
+                    // document.getElementById("knob").innerText= knob;
+
+                    alert("km/t= "+km+" knob= "+knob+" m/s= " +meter);
+                }
+                else {
+                    alert("Du skal udfylde et felt.")
+                }
+            }
+        }
+    }
+
+    function clear() {
+        //Denne måde virker ikke
+        // document.getElementById("km").innerText="";
+        // document.getElementById("knob").innerText="";
+        // document.getElementById("meter").innerText="";
+    }
+</script>
