@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Beregningside til en elektriker</title>
+        <style>
+            #beregner {
+                grid-area: beregner;
+            }
+
+            body {
+                display: grid;
+                grid-template-columns: 1fr 800px 1fr;
+                grid-template-areas:
+                    ". beregner ."
+                    ;
+            }
+            table {
+                width: 100%;
+            }
+
+            input {
+                width: 95%;
+            }
+        </style>
+
+    </head>
+    <body>
+        <section id="beregner">
+            <h1>Beregning af volt, ohm eller ampere</h1>
+            <table>
+                <tr>
+                    <td>Spænding(volt)</td>
+                    <td>Modstand(ohm)</td>
+                    <td>Strøm(ampere)</td>
+                </tr>
+                <tr>
+                    <td><input type="number" id="volt" name="volt" placeholder="volt"></td>
+                    <td><input type="number" id="ohm" name="ohm" placeholder="ohm"></td>
+                    <td><input type="number" id="ampere" name="ampere" placeholder="ampere"></td>
+                </tr>
+            </table>
+            <button type="button" onclick="beregn()">Beregn</button>
+        </section>
+    </body>
+</html>
+
+<script>
+    function beregn() {
+
+        
+        var volt = document.getElementById("volt").value;
+        var ohm = document.getElementById("ohm").value;
+        var ampere = document.getElementById("ampere").value;
+        
+
+        if(volt== ""){
+            if(ohm==""){
+                alert("(v-o-)Du skal udfylde mindst to telter");
+           }
+           else {
+               if(ampere==""){
+                alert("(v-o+a-)Du skal udfylde mindst to telter");
+               }
+               else{
+                   alert("Ohm * ampere = " + ohm*ampere)
+               }
+           }
+        }
+        else {
+            if(ohm == "") {
+                if(ampere==""){
+                    alert("v+o-a- Du skal mindst udfylde 2 felter")
+                }
+                else {
+                    alert("Volt / ampere = " + volt/ampere);
+                }
+            }
+            else {
+                if(ampere=="") {
+                alert("Volt / ohm = " + volt / ohm);
+                }
+                else {
+                    alert("fejl40 - udfyld kun to felter. Og det var KUN TO FELTER!!");
+                }
+            }
+        }
+    }
+</script>
