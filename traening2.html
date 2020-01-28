@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Fortællingsgenerator</title>
+</head>
+<body>
+    <form>
+        <table>
+            <tr>
+                <td>Hvad skal hovedpersonen hedde?</td>
+                <td><input type="text" id="f_navn" name="f_navn" placeholder="Navn"></td>
+            </tr>
+            <tr>
+                <td>Hvor skal historien foregå?</td>
+                <td><input type="text" id="f_sted" name="f_sted" placeholder="Sted"></td>
+            </tr>
+            <tr>
+                <td>Hvilken type kæledyr har hovedpersonen?</td>
+                <td><input type="text" id="f_keaeledyr_type" name="f_keaeledyr_type" placeholder="Type kæledyr"></td>
+            </tr>
+            <tr>
+                <td>Hvad skal navnet på kæledyret være?</td>
+                <td><input type="text" id="f_keaeledyr_navn" name="f_keaeledyr_navn" placeholder="Navn på kæledyr"></td>
+            </tr>
+            <tr>
+                <td>Hvad elsker hovedpersonen at lave med sit kæledyr?</td>
+                <td><input type="text" id="f_oeglingsbeskaeftigelse" name="f_oeglingsbeskaeftigelse" placeholder="Ønglingsbeskæftigelse"></td>
+            </tr>
+        </table>
+        <button type="button" onclick="fortallingsgenerator()">Sammensæt historien</button>
+
+        
+    </form>
+    
+</body>
+</html>
+<script>
+    function fortallingsgenerator() {
+        var f_navn, f_sted, f_keaeledyr_type, f_keaeledyr_navn, f_yglingsbeskaeftigelse = "";
+
+        f_navn = document.getElementById("f_navn").value;
+        f_sted = document.getElementById("f_sted").value;
+        f_keaeledyr_type = document.getElementById("f_keaeledyr_type").value;
+        f_keaeledyr_navn = document.getElementById("f_keaeledyr_navn").value;
+        f_oeglingsbeskaeftigelse = document.getElementById("f_oeglingsbeskaeftigelse").value;
+
+        
+    }
+</script>
