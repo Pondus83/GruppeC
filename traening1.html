@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Løbeberegner</title>
+</head>
+<body>
+    <form>
+        Hvor langt har du løbet?<br>
+        <input type="number" id="distance" name="distance" placeholder="meter">
+        <br>
+        Hvor lang tid tog det?<br>  
+        <input type="number" id="timer" name="timer" placeholder="timer">
+        <input type="number" id="minutter" name="minutter" placeholder="minutter">
+        <input type="number" id="sekunder" name="sekunder" placeholder= "sekunder">
+        <br>
+        <button type="button" onclick="loebeberegner_kmprtime()">Beregn hastighed</button>
+        <button type="button" onclick="loebeberegner_minprkm()">Beregn tempo</button>
+    </form>
+    
+</body>
+</html>
+<script>
+    function loebeberegner_kmprtime() {
+        var distance = 0;
+        var timer = 0;
+        var minutter = 0;
+        var sekunder = 0;
+        var hastighed = 0;
+        var tempo = 0;
+        var tid_timer = 0;
+
+        distance = document.getElementById("distance").value;   //meter
+        timer = document.getElementById("timer").value;         //
+        minutter = document.getElementById("minutter").value;
+        sekunder = document.getElementById("sekunder").value;
+
+        distance = parseFloat(distance);
+        timer = parseFloat(timer);
+        minutter = parseFloat(minutter);
+        sekunder = parseFloat(sekunder);
+        hastighed = parseFloat(hastighed);
+        tid_timer = parseFloat(tid_timer);
+
+        tid_timer = timer + minutter/60 + sekunder/3600;
+
+        hastighed = distance / 1000 / tid_timer;
+        hastighed = hastighed.toFixed(2);
+        
+
+        /*Test om der er intastet noget i hvert enkelt input i form*/
+        if(isNaN(distance)) {
+            alert("Du har ikke intastet en korekt distance");
+        } 
+        else {
+            if (isNaN(timer)) {
+            alert("Du har ikke intastet et korekt antal timer");
+            } 
+            else {
+                if (isNaN(minutter)) {
+                alert("Du har ikke intastet et korekt antal minutter");
+                } 
+                else {
+                    if (isNaN(sekunder)) {
+                    alert("Du har ikke intastet et korekt antal sekunder");
+                    }
+                    else {
+                        alert(hastighed + " km/timen");
+                    }
+                }
+            }
+        }
+    }
+
+    function loebeberegner_minprkm() {
+        var distance = 0;
+        var timer = 0;
+        var minutter = 0;
+        var sekunder = 0;
+        var tempo = 0;
+        var tid_minutter = 0;
+
+        distance = document.getElementById("distance").value;   //meter
+        timer = document.getElementById("timer").value;         //
+        minutter = document.getElementById("minutter").value;
+        sekunder = document.getElementById("sekunder").value;
+
+        distance = parseFloat(distance);
+        timer = parseFloat(timer);
+        minutter = parseFloat(minutter);
+        sekunder = parseFloat(sekunder);
+        tempo = parseFloat(tempo);
+        tid_minutter = parseFloat(tid_minutter);
+
+        tid_minutter = timer * 60 + minutter + sekunder/60;
+
+        tempo = tid_minutter / distance  * 1000;
+        tempo = tempo.toFixed(2);
+
+        /*Test om der er intastet noget i hvert enkelt input i form*/
+        if(isNaN(distance)) {
+            alert("Du har ikke intastet en korekt distance");
+        } 
+        else {
+            if (isNaN(timer)) {
+            alert("Du har ikke intastet et korekt antal timer");
+            } 
+            else {
+                if (isNaN(minutter)) {
+                alert("Du har ikke intastet et korekt antal minutter");
+                } 
+                else {
+                    if (isNaN(sekunder)) {
+                    alert("Du har ikke intastet et korekt antal sekunder");
+                    }
+                    else {
+                        alert(tempo + " minutter/km");
+                    }
+                }
+            }
+        }
+    }
+</script>
