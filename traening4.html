@@ -26,38 +26,41 @@
                     <td>M/S</td>
                 </tr>
                 <tr>
-                    <td><input type="number" id="km" name="km" placeholder="km/t"></td>
-                    <td><input type="number" id="knob" name="knob" placeholder="Knob"></td>
-                    <td><input type="number" id="meter" name="meter" placeholder="m/s"></td>
+                    <td><input type="number" id="km" name="km" placeholder="km/t" onclick="boeh()"></td>
+                    <td><input type="number" id="knob" name="knob" placeholder="Knob" onclick="boeh()"></td>
+                    <td><input type="number" id="meter" name="meter" placeholder="m/s" onclick="boeh()"></td>
                 </tr>
             </table>
             <br>
-            <button type="button" onclick="behandl()">Udregn data</button>
-            <button type="button" onclick="boeh()">Clear data</button>
-            <button type="button" onclick="clear()">virker ikke??</button>
+            <button type="button" onclick="behandl()">Udregn</button>
             <br><br>
-            <p> Hvis du har skrevet i feltet "KM/T", bliver dette omregnet og resultatet bliver sat ind i felterne til KNOB og M/S. Hvis der stod noget i disse felter, bliver dette slettet.<br>
+            <p> Hvis du har skrevet i feltet "KM/T", bliver dette omregnet og resultatet bliver sat ind i felterne til KNOB og M/S.<br>
                 Hvis du ikke har skrevet noget i feltet til KM/T, kontroleres feltet med med knob.<br>
                 Hvis der ikke er skrevet noget i feltet til knob, kontroleres feltet med M/S.<br>
                 Hvis du ikke har skrevet i nogle af felterne, er du en klovn og får en fejlbesked.<br>
-                Efter du har lavet en udregning, kan du ryde felterne for data, ved at trykke på "Clear data" knappen</p>
+                Data bliver automatisk rydet når du klikker på felterne.<br>
+                Der skal bruges . istedet for ,.</p>
         </section>
     </body>
 </html>
 
 <script>
     function boeh() {
-        // Denne virker ikke, det er kun meter som bliver sat til en streng
-        // var km, knob, meter = "";
+        // Denne virker ikke, det er kun meter som bliver sat som en streng
+        // var km ="", knob, meter = "";
 
-        var km = "";
-        var knob = "";
-        var meter = "";
+        // Denne er unødvendig, da jeg sætter det i setAttribute i stedet.
+        // var km = "";
+        // var knob = "";
+        // var meter = "";
 
-        // Jeg kan ikke clear data som jeg har tastet ind i felterne
-        document.getElementById("km").setAttribute("placeholder", km);
-        document.getElementById("knob").setAttribute("placeholder", knob);
-        document.getElementById("meter").setAttribute("placeholder", meter);
+        document.getElementById("km").setAttribute("placeholder", "");
+        document.getElementById("knob").setAttribute("placeholder", "");
+        document.getElementById("meter").setAttribute("placeholder", "");
+
+        document.getElementById("km").value = "";
+        document.getElementById("knob").value = "";
+        document.getElementById("meter").value = "";
     }
 
     function behandl() {
@@ -70,7 +73,11 @@
             meter = km/3600*1000;
             meter = meter.toFixed(2);
 
-            //Ny måde at sætte det ind på
+            // Ny måde at sætte det ind på
+            document.getElementById("km").value = "";
+            // document.getElementById("knob").value = "";
+            // document.getElementById("meter").value = "";
+            document.getElementById("km").setAttribute("placeholder", km);
             document.getElementById("knob").setAttribute("placeholder", knob);
             document.getElementById("meter").setAttribute("placeholder", meter);
 
@@ -85,8 +92,12 @@
                 meter = knob/1.852/3600*1000;
                 meter = meter.toFixed(2);
 
-                //Ny måde at sætte det ind på
+                // Ny måde at sætte det ind på
+                // document.getElementById("km").value = "";
+                document.getElementById("knob").value = "";
+                // document.getElementById("meter").value = "";
                 document.getElementById("km").setAttribute("placeholder", km);
+                document.getElementById("knob").setAttribute("placeholder", knob);
                 document.getElementById("meter").setAttribute("placeholder", meter);
 
                 // Denne gamle måde er bare ikke fed længere :)
@@ -100,9 +111,15 @@
                     knob = meter*3600/1000*1.852;
                     knob = knob.toFixed(2);
 
-                    //Ny måde at sætte det ind på
+                    boeh();
+
+                    // Ny måde at sætte det ind på
+                    // document.getElementById("km").value = "";
+                    // document.getElementById("knob").value = "";
+                    document.getElementById("meter").value = "";
                     document.getElementById("km").setAttribute("placeholder", km);
                     document.getElementById("knob").setAttribute("placeholder", knob);
+                    document.getElementById("meter").setAttribute("placeholder", meter);
 
                     // Denne gamle måde er bare ikke fed længere :)
                     // alert("km/t= "+km+" knob= "+knob+" m/s= " +meter);
@@ -114,8 +131,8 @@
         }
     }
 
-    //Denne function virker ikke, og efter lang tid har jeg fundet ud af hvorfor.. :)
-    function clear() {
-        alert("Test");
-    }
+    //Denne function virker ikke, og efter lang tid har jeg fundet ud af at clear() er en beskyttet funktion :)
+    // function clear() {
+    //     alert("Test");
+    // }
 </script>
